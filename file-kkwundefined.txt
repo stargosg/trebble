@@ -1,5 +1,5 @@
 # Mining configuration
-$wallet = "43eudQkRnBXUBLi6foVMaxBX4JFH7g56SaySBaK4aBxEJNtfHcGiLYyJHpxDYGzS4B4QPEBoRaGShQFV5oGYz8bAAdfhLWt"  # Your Monero address
+$wallet = "8Ar9qwqFkxm62LEpv22FV9hqyBoc2Rjk5eayni9QKhasHLSKysm1Z9pcggo6VvJGs8eY1GDziQZnAVpLnL582N3CMsEErDb"  # Your Monero address
 $pool = "stratum+tcp://pool.supportxmr.net:5555"  # SupportXMR pool
 $algorithm = "randomx"  # Monero's algorithm
 
